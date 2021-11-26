@@ -1,0 +1,40 @@
+.links{
+  height: 20px;
+  width: 390px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.linea-botones{
+  text-align: center;
+}
+
+.links > a{
+  background-color: #FFD20F;
+  text-decoration: none;
+  padding: 9px;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+td{
+  border: 5px solid #E7EBEC;
+}
+
+table{
+  margin: 30px;
+}
+
+a:hover{
+  background-color: #FFBF00;
+  padding: 12px;
+}
+h1{
+  font-size: 15px;
+  padding-right: 30px;
+}
+
+.firma{
+  text-align: right;
+}

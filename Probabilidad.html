@@ -1,0 +1,235 @@
+<HTML>
+<HEAD>
+  <TITLE>Probabilidad</TITLE>
+  <meta NAME = "GENERATOR"          CONTENT = "IHMC CmapTools vr. 4.12 ">
+  <meta NAME = "KEYWORDS"           CONTENT = "Jhony Alejandro Caro, Mapa Conceptual, cmap, CmapTools, IHMC, Probabilidad - parte 1,  Seguro,  Peano Aritmetica,  Verdades incuestionables,  a-Axiomas,  Independientes,  https://www.significados.com/axioma/,  Contrario,  Compatibles,  Principios argumentativos,  Newton Mecánica clásica,  Euclides Geometria clásica,  Dependientes,  c-Probabilidad de un suceso,  b-Sucesos y tipos de sucesos,  Cada resultados posibles de una experiencia aleatoria,  Elemental,  Compuesto,  https://www.superprof.es/diccionario/ matematicas/probabilidades/sucesos-probabilidad.html,  ????,  PROBABILIDAD">
+  <meta NAME = "DESCRIPTION"        CONTENT = "Este Cmap, tiene información relacionada con: Probabilidad - parte 1, PROBABILIDAD ¿Qué reglas se establecen para el manejo de las probabilidades? ????, Cada resultados posibles de una experiencia aleatoria Ejemplos https://www.superprof.es/diccionario/ matematicas/probabilidades/sucesos-probabilidad.html, Verdades incuestionables Se utilizan como Principios argumentativos, Cada resultados posibles de una experiencia aleatoria Tipos Elemental, Principios argumentativos Algunos axiomas Newton Mecánica clásica, Cada resultados posibles de una experiencia aleatoria Tipos Dependientes, Cada resultados posibles de una experiencia aleatoria Tipos Compatibles, PROBABILIDAD ¿La probabilidad es un sistema axiomático? a-Axiomas, Cada resultados posibles de una experiencia aleatoria Tipos Imposible, Cada resultados posibles de una experiencia aleatoria Tipos Compuesto, PROBABILIDAD ¿Cómo asignar el valor de probabilidad a un evento? c-Probabilidad de un suceso, a-Axiomas Se define como Verdades incuestionables, PROBABILIDAD ¿Cuáles son los objetivos de estudio de la probabilidad? b-Sucesos y tipos de sucesos, Principios argumentativos Algunos axiomas Euclides Geometria clásica, Principios argumentativos Algunos axiomas Peano Aritmetica, Cada resultados posibles de una experiencia aleatoria Tipos Independientes, Cada resultados posibles de una experiencia aleatoria Tipos Seguro, b-Sucesos y tipos de sucesos Se define como Cada resultados posibles de una experiencia aleatoria, Cada resultados posibles de una experiencia aleatoria Tipos Contrario">
+  <meta NAME = "AUTHOR"             CONTENT = "Jhony Alejandro Caro">
+  <meta HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = UTF-8">
+  <link rel="stylesheet" href="style.css" />
+  <script LANGUAGE="JavaScript1.2">
+  <!--
+    //  PopUp --
+    //  Institute for Human and Machine Cognition, http://www.ihmc.us/
+    //  CmapTools, Version 4.11, http://cmap.ihmc.us/
+    //  Modify by: CmapTools Developers, cmapsupport@ihmc.us
+    //  Date: 12/14/2006
+
+    var IE = 0;
+    var IE4PC = 0;
+    var NS = 0;
+    var GECKO = 0;
+
+    var openpopups = new Array();
+
+    if (document.all) {                 // Internet Explorer Detected
+	   IE = true;	
+    }
+    else if (document.layers) {         // Netscape Navigator Detected
+	   NS = true;	
+    }
+    else if (document.getElementById) { // Netscape 6 Detected
+       GECKO = true;
+    }
+    else {
+	   alert("Unrecognized Browser Detected::\nSorry, your browser is not compatible.");
+    }
+
+    if (IE)
+    {
+	   OS = navigator.platform;
+	   VER = new String(navigator.appVersion);
+	   VER = VER.substr (0, VER.indexOf(" "));
+	   if ((VER < 4.8) && (OS == "Win32")) 
+	   {
+	       IE4PC = 1;
+	   }
+    }
+
+    function handleResize() {
+	    location.reload();
+	    return false;
+    }
+
+
+    if ((NS) && (navigator.platform == "MacPPC")) {
+	   window.captureEvents (Event.RESIZE);
+	   window.onresize = handleResize;
+    }
+
+    function openResource(event, resourcePath, resourceName, resourceType)
+    {
+	   var newwindow;
+
+       // Resource MIMETypes are enumerated as follows: 
+       // cMap     = Undefined
+       // Image    = 0
+       // Video    = 1
+       // Text     = 2
+       // Audio    = 3
+
+       popDown();
+
+	   switch (resourceType) 
+	   {
+	    case 0:     //Image
+                    newwindow = window.open (resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+                    var text ='<center><img src=\"';
+                    text += resourcePath;
+                    text +='\"> </center>';
+             break;
+		
+	    case 1:  text   // Video
+		     newwindow = window.open (resourcePath,resourceName);
+                     newwindow.onBlur = newwindow.focus()
+                     var text ='<embed src=\"';
+                     text += resourcePath;
+                     text +='\" autostart=true> </embed> ';
+             break;
+
+	    case 2:      // Text or Unknown 
+		     newwindow = window.open(resourcePath,resourceName);
+                     newwindow.onBlur = newwindow.focus()
+              break;
+
+	    case 3:       // Audio
+                    newwindow = window.open (resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+                    var text ='<embed src=\"';
+                    text += resourcePath;
+                    text +='\" autoplay=true> </embed> ';
+             break;
+
+	    case 4:
+                    newwindow = window.open(resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+	     break;
+	    }
+        return;
+    }
+
+
+
+    function popUpEvt(event, popupName)
+    {
+	popDown();
+
+	if (GECKO)
+	{
+	    document.getElementById(popupName).style.left = event.layerX;
+	    document.getElementById(popupName).style.top = event.layerY;
+	    document.getElementById(popupName).style.background = "#B3B3B3";
+	    document.getElementById(popupName).style.visibility = "visible";
+	    openpopups.push(popupName);
+	}
+	else if (NS) 
+	{
+	    document.layers[popupName].moveTo (event.pageX, event.pageY);
+	    document.layers[popupName].bgColor = "#B3B3B3";
+	    document.layers[popupName].visibility = "show";
+	    openpopups.push(popupName);
+	}
+	else // if (IE)
+	{
+	    window.event.cancelBubble = true;
+	    if (!IE4PC) {
+		document.all[popupName].style.backgroundColor = "#B3B3B3";
+	    }	
+	    document.all[popupName].style.left = window.event.clientX + document.body.scrollLeft;
+	    document.all[popupName].style.top = window.event.clientY + document.body.scrollTop;
+	    document.all[popupName].style.visibility = "visible";
+	    openpopups[openpopups.length] = popupName;
+	}
+	return false;
+    }
+
+    function popDown()
+    {
+	var popupname;
+	
+	for (var i = 0; i < openpopups.length; i++) 
+	{
+	    popupname = new String (openpopups[i]);      
+	    if (GECKO) {
+		document.getElementById(popupname).style.visibility = "hidden";
+	    }
+	    else if (NS) {
+		document.layers[popupname].visibility = "hide";
+	    }
+	    else {
+		document.all[popupname].style.visibility = "hidden";
+	    }
+	}
+	openpopups = new Array();
+	return;
+    }
+
+    function popDownNoGecko() 
+    {
+	var popupname;
+	for (var i = 0; i < openpopups.length; i++) 
+	{
+	    popupname = new String (openpopups[i]);      
+	    if (GECKO) {
+           //  document.getElementById(popupname).style.visibility = "hidden"; 
+	        return;   // erased for test purposes
+	    }  
+	    else if (NS) {
+	        document.layers[popupname].visibility = "hide";
+	    }
+	    else {
+	        document.all[popupname].style.visibility = "hidden";
+	    }
+	}
+	openpopups = new Array();
+        return;
+    }
+  //-->
+  </script>
+</HEAD>
+<BODY bgcolor="#E7EBEC" leftmargin="0" topmargin="0">
+
+<map name="Probabilidad.html">
+</map>
+
+<center>
+  <table width=* height=* cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td valign=center align=center colspan="5">
+        <img USEMAP="#Probabilidad.html"
+             SRC="Probabilidad.jpg"
+             ALIGN=middle
+             BORDER=0
+             onClick=popDown();>
+      </td>
+    </tr>
+    <tr class="linea-botones">
+      <td class="links">
+        <a target="_blank" href="https://www.significados.com/axioma/">Axiomas</a>
+      </td>
+      <td class="links">
+        <a target="_blank" href="https://www.superprof.es/diccionario/matematicas/probabilidades/sucesos-probabilidad.html">Ejemplos de sucesos</a>
+      </td>
+      <td class="links">
+        <a target="_blanck" href="http://recursostic.educacion.es/secundaria/edad/3esomatematicas/3quincena12/3quincena12_contenidos_2a.htm#:~:text=La%20probabilidad%20de%20un%20suceso,%2C%20P(E)%3D1.">Probabilidades de un suceso</a>
+      </td>
+      <td class="links" colspan="2">
+        <a target="_blank" href="https://sites.google.com/site/623probabilidad/reglas-de-probabilidad">Reglas de la probabilidad</a>
+      </td>
+    </tr>
+    <tr class="linea-botones">
+      <td class="links">
+        <a target="_blank" href="https://www.gestiopolis.com/cuales-son-los-principios-basicos-de-la-probabilidad/">Principios basicos de la probabilidad</a>
+      </td>  
+    </tr>
+    <tr class="firma">
+      <td colspan="5">
+        <h1>Autor: Jhony Alejandro Caro U. (UD) - 20191020055.</h1>
+      </td>
+    </tr>
+  </table>
+</center>
+</BODY>
+</HTML>
+
