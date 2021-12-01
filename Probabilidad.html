@@ -1,0 +1,347 @@
+<HTML>
+<HEAD>
+  <TITLE>Probabilidad</TITLE>
+  <meta HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = UTF-8">
+  <script LANGUAGE="JavaScript1.2">
+  <!--
+    //  PopUp --
+    //  Institute for Human and Machine Cognition, http://www.ihmc.us/
+    //  CmapTools, Version 4.11, http://cmap.ihmc.us/
+    //  Modify by: CmapTools Developers, cmapsupport@ihmc.us
+    //  Date: 12/14/2006
+
+    var IE = 0;
+    var IE4PC = 0;
+    var NS = 0;
+    var GECKO = 0;
+
+    var openpopups = new Array();
+
+    if (document.all) {                 // Internet Explorer Detected
+	   IE = true;	
+    }
+    else if (document.layers) {         // Netscape Navigator Detected
+	   NS = true;	
+    }
+    else if (document.getElementById) { // Netscape 6 Detected
+       GECKO = true;
+    }
+    else {
+	   alert("Unrecognized Browser Detected::\nSorry, your browser is not compatible.");
+    }
+
+    if (IE)
+    {
+	   OS = navigator.platform;
+	   VER = new String(navigator.appVersion);
+	   VER = VER.substr (0, VER.indexOf(" "));
+	   if ((VER < 4.8) && (OS == "Win32")) 
+	   {
+	       IE4PC = 1;
+	   }
+    }
+
+    function handleResize() {
+	    location.reload();
+	    return false;
+    }
+
+
+    if ((NS) && (navigator.platform == "MacPPC")) {
+	   window.captureEvents (Event.RESIZE);
+	   window.onresize = handleResize;
+    }
+
+    function openResource(event, resourcePath, resourceName, resourceType)
+    {
+	   var newwindow;
+
+       // Resource MIMETypes are enumerated as follows: 
+       // cMap     = Undefined
+       // Image    = 0
+       // Video    = 1
+       // Text     = 2
+       // Audio    = 3
+
+       popDown();
+
+	   switch (resourceType) 
+	   {
+	    case 0:     //Image
+                    newwindow = window.open (resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+                    var text ='<center><img src=\"';
+                    text += resourcePath;
+                    text +='\"> </center>';
+             break;
+		
+	    case 1:  text   // Video
+		     newwindow = window.open (resourcePath,resourceName);
+                     newwindow.onBlur = newwindow.focus()
+                     var text ='<embed src=\"';
+                     text += resourcePath;
+                     text +='\" autostart=true> </embed> ';
+             break;
+
+	    case 2:      // Text or Unknown 
+		     newwindow = window.open(resourcePath,resourceName);
+                     newwindow.onBlur = newwindow.focus()
+              break;
+
+	    case 3:       // Audio
+                    newwindow = window.open (resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+                    var text ='<embed src=\"';
+                    text += resourcePath;
+                    text +='\" autoplay=true> </embed> ';
+             break;
+
+	    case 4:
+                    newwindow = window.open(resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+	     break;
+	    }
+        return;
+    }
+
+
+
+    function popUpEvt(event, popupName)
+    {
+	popDown();
+
+	if (GECKO)
+	{
+	    document.getElementById(popupName).style.left = event.layerX;
+	    document.getElementById(popupName).style.top = event.layerY;
+	    document.getElementById(popupName).style.background = "#B3B3B3";
+	    document.getElementById(popupName).style.visibility = "visible";
+	    openpopups.push(popupName);
+	}
+	else if (NS) 
+	{
+	    document.layers[popupName].moveTo (event.pageX, event.pageY);
+	    document.layers[popupName].bgColor = "#B3B3B3";
+	    document.layers[popupName].visibility = "show";
+	    openpopups.push(popupName);
+	}
+	else // if (IE)
+	{
+	    window.event.cancelBubble = true;
+	    if (!IE4PC) {
+		document.all[popupName].style.backgroundColor = "#B3B3B3";
+	    }	
+	    document.all[popupName].style.left = window.event.clientX + document.body.scrollLeft;
+	    document.all[popupName].style.top = window.event.clientY + document.body.scrollTop;
+	    document.all[popupName].style.visibility = "visible";
+	    openpopups[openpopups.length] = popupName;
+	}
+	return false;
+    }
+
+    function popDown()
+    {
+	var popupname;
+	
+	for (var i = 0; i < openpopups.length; i++) 
+	{
+	    popupname = new String (openpopups[i]);      
+	    if (GECKO) {
+		document.getElementById(popupname).style.visibility = "hidden";
+	    }
+	    else if (NS) {
+		document.layers[popupname].visibility = "hide";
+	    }
+	    else {
+		document.all[popupname].style.visibility = "hidden";
+	    }
+	}
+	openpopups = new Array();
+	return;
+    }
+
+    function popDownNoGecko() 
+    {
+	var popupname;
+	for (var i = 0; i < openpopups.length; i++) 
+	{
+	    popupname = new String (openpopups[i]);      
+	    if (GECKO) {
+           //  document.getElementById(popupname).style.visibility = "hidden"; 
+	        return;   // erased for test purposes
+	    }  
+	    else if (NS) {
+	        document.layers[popupname].visibility = "hide";
+	    }
+	    else {
+	        document.all[popupname].style.visibility = "hidden";
+	    }
+	}
+	openpopups = new Array();
+        return;
+    }
+  //-->
+  </script>
+</HEAD>
+<BODY bgcolor="#FFFFFF" leftmargin="0" topmargin="0">
+<noscript>
+  <table width=90% cellpadding=10>
+    <tr>
+      <td bgcolor=ff4447>
+        <font color=000000 size=+1 face="helvetica">
+        <h1>WARNING:</h1>
+        <b>JavaScript is turned OFF.  None of the links on this concept map will <br>
+           work until it is reactivated.
+          <p>
+            <a href="http://cmap.ihmc.us/docs/EnablingJavaScript.html">
+                            If you need help turning JavaScript On, click here.
+            </a>
+          </p>
+        </b>
+      </td>
+    </tr>
+  </table>
+Este Cmap, tiene información relacionada con: Probabilidad, Incompatibles ???? &#60math xmlns="http://www.w3.org/1998/Math/MathML"&#62 &#60mrow&#62 &#60mtext&#62 ALGUNOS EJEMPLOS:&NewLine;&NewLine;1-Suceso Seguro: Lanzando un dado obtener un número menor que 7.&NewLine;&NewLine;2-Suceso Dependiente: Sacar n cartas de una baraja.&NewLine;&NewLine;3-Sucesos independientes: Lanzar n monedas al tiempo.&NewLine;&NewLine;4-Suceso Contrario: Al lanzar un dado sacar par y sacar impar son contrarios.&NewLine;&NewLine;5-Suceso incompatible: Si al lanzar 2 dados un suceso es sacar par &NewLine;y el otro es sacar multiplos de 5. &#60/mtext&#62 &#60/mrow&#62 &#60/math&#62, Cada resultado posible de una experiencia aleatoria Tipos Compatibles, a-Axiomas Se define como Verdades incuestionables, d-Leyes de las probabilidades Son Dependencia de eventos, Cada resultado posible de una experiencia aleatoria Tipos Dependientes, Unión ???? Eventos, b-Sucesos y tipos de sucesos Se define como Cada resultado posible de una experiencia aleatoria, Seguro ???? &#60math xmlns="http://www.w3.org/1998/Math/MathML"&#62 &#60mrow&#62 &#60mtext&#62 ALGUNOS EJEMPLOS:&NewLine;&NewLine;1-Suceso Seguro: Lanzando un dado obtener un número menor que 7.&NewLine;&NewLine;2-Suceso Dependiente: Sacar n cartas de una baraja.&NewLine;&NewLine;3-Sucesos independientes: Lanzar n monedas al tiempo.&NewLine;&NewLine;4-Suceso Contrario: Al lanzar un dado sacar par y sacar impar son contrarios.&NewLine;&NewLine;5-Suceso incompatible: Si al lanzar 2 dados un suceso es sacar par &NewLine;y el otro es sacar multiplos de 5. &#60/mtext&#62 &#60/mrow&#62 &#60/math&#62, c-Probabilidad de un suceso ¿Cómo construir ejemplos de espacios muestrales? &#60math xmlns="http://www.w3.org/1998/Math/MathML"&#62 &#60mtext&#62 EJEMPLO PROPIO:&NewLine;&NewLine;Jugando a lanzar 2 dados y&NewLine;registrando los resultados el&NewLine;espacio muestral sera:&NewLine;&NewLine;S = {2,3,4,5,6,7,8,9,10,11,12} &#60/mtext&#62 &#60/math&#62, Dependientes ???? &#60math xmlns="http://www.w3.org/1998/Math/MathML"&#62 &#60mrow&#62 &#60mtext&#62 ALGUNOS EJEMPLOS:&NewLine;&NewLine;1-Suceso Seguro: Lanzando un dado obtener un número menor que 7.&NewLine;&NewLine;2-Suceso Dependiente: Sacar n cartas de una baraja.&NewLine;&NewLine;3-Sucesos independientes: Lanzar n monedas al tiempo.&NewLine;&NewLine;4-Suceso Contrario: Al lanzar un dado sacar par y sacar impar son contrarios.&NewLine;&NewLine;5-Suceso incompatible: Si al lanzar 2 dados un suceso es sacar par &NewLine;y el otro es sacar multiplos de 5. &#60/mtext&#62 &#60/mrow&#62 &#60/math&#62, Unión ???? Mutualmente excluyentes, d-Leyes de las probabilidades Son Probabilidad contraria, Cada resultado posible de una experiencia aleatoria Tipos Seguro, c-Probabilidad de un suceso ???? [Emulador], d-Leyes de las probabilidades Son Unión, Mutualmente excluyentes ???? P(A ∪ B) = P(A) + P(B), Principios argumentativos Algunos axiomas Peano Aritmetica, Principios argumentativos Algunos axiomas Euclides Geometria clásica, a-Axiomas ???? [Enlace], P(S) [siendo S el suceso a medir] Si P(S) tendiendo a 0 Poco probable
+
+</noscript>
+
+<map name="Probabilidad.html">
+  <area shape="rect"
+        href="1XJZ5GV9XI20ZPW02I11SCItextIhtml"
+        onClick="popUpEvt(event,'1XJZ5GV9XI20ZPW02I11SCItextIhtml'); return false;"
+        coords="1844,173,1862,191">
+  <area shape="rect"
+        href="1XJGV8N2BI1S6BHGMI6GLItextIx-url"
+        onClick="popUpEvt(event,'1XJGV8N2BI1S6BHGMI6GLItextIx-url'); return false;"
+        coords="305,613,323,631">
+  <area shape="rect"
+        href="1XJYZ8JXHIGCYZ4SI4KZItextIhtml"
+        onClick="popUpEvt(event,'1XJYZ8JXHIGCYZ4SI4KZItextIhtml'); return false;"
+        coords="308,164,326,182">
+  <area shape="rect"
+        href="1XJZ57M6NIMRS5Y1IZNKItextIhtml"
+        onClick="popUpEvt(event,'1XJZ57M6NIMRS5Y1IZNKItextIhtml'); return false;"
+        coords="830,176,848,194">
+  <area shape="rect"
+        href="1XJGV8PHNI5KSCJ9I6GQItextIx-url"
+        onClick="popUpEvt(event,'1XJGV8PHNI5KSCJ9I6GQItextIx-url'); return false;"
+        coords="61,613,79,631">
+  <area shape="rect"
+        href="1XJGV578ZI2BJC0XNI6F4ItextIx-url"
+        onClick="popUpEvt(event,'1XJGV578ZI2BJC0XNI6F4ItextIx-url'); return false;"
+        coords="185,613,203,631">
+  <area shape="rect"
+        href="1XJZ4XGQ0I28SMXFVIXC4ItextIhtml"
+        onClick="popUpEvt(event,'1XJZ4XGQ0I28SMXFVIXC4ItextIhtml'); return false;"
+        coords="732,298,750,316">
+</map>
+
+<center>
+  <table width=* height=* cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td valign=center align=center>
+        <img USEMAP="#Probabilidad.html"
+             SRC="Probabilidad.jpg"
+             ALIGN=middle
+             BORDER=0
+             onClick=popDown();>
+      </td>
+    </tr>
+    <tr>
+      <td VALIGN=top ALIGN=right>
+        <table>
+          <tr>
+            <td ALIGN=right VALIGN=middle>
+              <map NAME="CmapToolsTrademark">
+                <area SHAPE="rect"
+                      href="http://cmap.ihmc.us/"
+                      onClick="openResource(event,'http://cmap.ihmc.us/', 0, 2); return false;"
+                      coords="1,1,210,50">
+              </map>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</center>
+</BODY>
+</HTML>
+<div id="1XJZ5GV9XI20ZPW02I11SCItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://sites.google.com/site/623probabilidad/reglas-de-probabilidad "TITLE="">
+      Reglas de probabilidad
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XJGV8N2BI1S6BHGMI6GLItextIx-url" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="http://ricabib.cab.cnea.gov.ar/696/1/mecanica_2.pdf "TITLE="">
+      Mecánica clasica
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XJYZ8JXHIGCYZ4SI4KZItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://www.significados.com/axioma/" TITLE="">
+      Axiomas
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XJZ57M6NIMRS5Y1IZNKItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="http://recursostic.educacion.es/secundaria/edad/3esomatematicas/3quincena12/3quincena12_contenidos_2a.htm#:~:text=La%20probabilidad%20de%20un%20suceso,%2C%20P(E)%3D1. "TITLE="">
+      Probabilidades con dados
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XJGV8PHNI5KSCJ9I6GQItextIx-url" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://www.astromia.com/biografias/euclides.htm "TITLE="">
+      Gometría clásica
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XJGV578ZI2BJC0XNI6F4ItextIx-url" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="http://p.sanchezterraf.com.ar/2018/03/19/la-aritmetica-de-peano/ "TITLE="">
+      Aritmetica
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XJZ4XGQ0I28SMXFVIXC4ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://www.superprof.es/diccionario/matematicas/probabilidades/sucesos-probabilidad.html "TITLE="">
+      Sucesos y ejemplos
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+

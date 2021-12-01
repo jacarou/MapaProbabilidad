@@ -1,0 +1,317 @@
+<HTML>
+<HEAD>
+  <TITLE>Teorias de probabilidad</TITLE>
+  <meta HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = UTF-8">
+  <script LANGUAGE="JavaScript1.2">
+  <!--
+    //  PopUp --
+    //  Institute for Human and Machine Cognition, http://www.ihmc.us/
+    //  CmapTools, Version 4.11, http://cmap.ihmc.us/
+    //  Modify by: CmapTools Developers, cmapsupport@ihmc.us
+    //  Date: 12/14/2006
+
+    var IE = 0;
+    var IE4PC = 0;
+    var NS = 0;
+    var GECKO = 0;
+
+    var openpopups = new Array();
+
+    if (document.all) {                 // Internet Explorer Detected
+	   IE = true;	
+    }
+    else if (document.layers) {         // Netscape Navigator Detected
+	   NS = true;	
+    }
+    else if (document.getElementById) { // Netscape 6 Detected
+       GECKO = true;
+    }
+    else {
+	   alert("Unrecognized Browser Detected::\nSorry, your browser is not compatible.");
+    }
+
+    if (IE)
+    {
+	   OS = navigator.platform;
+	   VER = new String(navigator.appVersion);
+	   VER = VER.substr (0, VER.indexOf(" "));
+	   if ((VER < 4.8) && (OS == "Win32")) 
+	   {
+	       IE4PC = 1;
+	   }
+    }
+
+    function handleResize() {
+	    location.reload();
+	    return false;
+    }
+
+
+    if ((NS) && (navigator.platform == "MacPPC")) {
+	   window.captureEvents (Event.RESIZE);
+	   window.onresize = handleResize;
+    }
+
+    function openResource(event, resourcePath, resourceName, resourceType)
+    {
+	   var newwindow;
+
+       // Resource MIMETypes are enumerated as follows: 
+       // cMap     = Undefined
+       // Image    = 0
+       // Video    = 1
+       // Text     = 2
+       // Audio    = 3
+
+       popDown();
+
+	   switch (resourceType) 
+	   {
+	    case 0:     //Image
+                    newwindow = window.open (resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+                    var text ='<center><img src=\"';
+                    text += resourcePath;
+                    text +='\"> </center>';
+             break;
+		
+	    case 1:  text   // Video
+		     newwindow = window.open (resourcePath,resourceName);
+                     newwindow.onBlur = newwindow.focus()
+                     var text ='<embed src=\"';
+                     text += resourcePath;
+                     text +='\" autostart=true> </embed> ';
+             break;
+
+	    case 2:      // Text or Unknown 
+		     newwindow = window.open(resourcePath,resourceName);
+                     newwindow.onBlur = newwindow.focus()
+              break;
+
+	    case 3:       // Audio
+                    newwindow = window.open (resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+                    var text ='<embed src=\"';
+                    text += resourcePath;
+                    text +='\" autoplay=true> </embed> ';
+             break;
+
+	    case 4:
+                    newwindow = window.open(resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+	     break;
+	    }
+        return;
+    }
+
+
+
+    function popUpEvt(event, popupName)
+    {
+	popDown();
+
+	if (GECKO)
+	{
+	    document.getElementById(popupName).style.left = event.layerX;
+	    document.getElementById(popupName).style.top = event.layerY;
+	    document.getElementById(popupName).style.background = "#B3B3B3";
+	    document.getElementById(popupName).style.visibility = "visible";
+	    openpopups.push(popupName);
+	}
+	else if (NS) 
+	{
+	    document.layers[popupName].moveTo (event.pageX, event.pageY);
+	    document.layers[popupName].bgColor = "#B3B3B3";
+	    document.layers[popupName].visibility = "show";
+	    openpopups.push(popupName);
+	}
+	else // if (IE)
+	{
+	    window.event.cancelBubble = true;
+	    if (!IE4PC) {
+		document.all[popupName].style.backgroundColor = "#B3B3B3";
+	    }	
+	    document.all[popupName].style.left = window.event.clientX + document.body.scrollLeft;
+	    document.all[popupName].style.top = window.event.clientY + document.body.scrollTop;
+	    document.all[popupName].style.visibility = "visible";
+	    openpopups[openpopups.length] = popupName;
+	}
+	return false;
+    }
+
+    function popDown()
+    {
+	var popupname;
+	
+	for (var i = 0; i < openpopups.length; i++) 
+	{
+	    popupname = new String (openpopups[i]);      
+	    if (GECKO) {
+		document.getElementById(popupname).style.visibility = "hidden";
+	    }
+	    else if (NS) {
+		document.layers[popupname].visibility = "hide";
+	    }
+	    else {
+		document.all[popupname].style.visibility = "hidden";
+	    }
+	}
+	openpopups = new Array();
+	return;
+    }
+
+    function popDownNoGecko() 
+    {
+	var popupname;
+	for (var i = 0; i < openpopups.length; i++) 
+	{
+	    popupname = new String (openpopups[i]);      
+	    if (GECKO) {
+           //  document.getElementById(popupname).style.visibility = "hidden"; 
+	        return;   // erased for test purposes
+	    }  
+	    else if (NS) {
+	        document.layers[popupname].visibility = "hide";
+	    }
+	    else {
+	        document.all[popupname].style.visibility = "hidden";
+	    }
+	}
+	openpopups = new Array();
+        return;
+    }
+  //-->
+  </script>
+</HEAD>
+<BODY bgcolor="#FFFFFF" leftmargin="0" topmargin="0">
+<noscript>
+  <table width=90% cellpadding=10>
+    <tr>
+      <td bgcolor=ff4447>
+        <font color=000000 size=+1 face="helvetica">
+        <h1>WARNING:</h1>
+        <b>JavaScript is turned OFF.  None of the links on this concept map will <br>
+           work until it is reactivated.
+          <p>
+            <a href="http://cmap.ihmc.us/docs/EnablingJavaScript.html">
+                            If you need help turning JavaScript On, click here.
+            </a>
+          </p>
+        </b>
+      </td>
+    </tr>
+  </table>
+Este Cmap, tiene información relacionada con: Teorias de probabilidad, d. Desviación Estandar y Varianza ¿Qué es la desviacion Estandar? Es simplemente la raíz cuadrada positiva de la varianza., &#60math xmlns="http://www.w3.org/1998/Math/MathML"&#62 &#60mtext&#62 la esperanza se calcula como la media aritmética de los valores,&NewLine;es decir la suma de los valores por sus probabilidades (las &NewLine;probabilidades serían las frecuencias relativas).&NewLine; &NewLine; k&NewLine;μ=E(X)=∑ xi⋅pi.&NewLine; i=1 &#60/mtext&#62 &#60/math&#62 ???? [Enlace], Matemático, nació en Londres, Inglaterra ¿Cuál fue su aporte? a. Teoría Bayesiana, Son funciones que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio. ???? [Enlace], TEORIAS DE PROBABILIDAD ¿Qué funciones se definen sobre los eventos? b. Variables aleatorias, TEORIAS DE PROBABILIDAD ¿Qué es la esperanza matemática? c. Promedio y Media aritmética, Es la posibilidad que un suceso ocurra habiendo pasado otro suceso anteriormente, es decir que la mayoría de los ejemplos se plantearan de la siguiente manera: “Cual es la probabilidad que ocurra el suceso A dado que ha ocurrido el suceso B” o “Cual es la probabilidad que suceda el evento A sí ya ocurrió el evento B”. ???? &#60math xmlns="http://www.w3.org/1998/Math/MathML"&#62 &#60mrow&#62 &#60mtext&#62 EJEMPLO PROPIO:&NewLine;&NewLine;En Colombia se sabe que el 30% de las familias&NewLine;tienen carro y de esas familias con carro el 25%&NewLine;tienen al menos un hijo.&NewLine;¿Cuál es la probabilidad de que al seleccionar&NewLine;una familia con carro, tenga al menos un hijo?&NewLine;&NewLine;h = tienen al menos un hijo , c = tienen carro &NewLine;&NewLine;P(h | c) = P (h ∩ c)/P(c)&NewLine;&NewLine;P(h | c) = 25%/30%&NewLine;&NewLine;P(h | c) = 0.83&NewLine;&NewLine;RTA: La probabilidad al seleccionar una familia &NewLine;colombiana con carro es del 83% que tiene al&NewLine;menos un hijo. &#60/mtext&#62 &#60/mrow&#62 &#60/math&#62, c. Promedio y Media aritmética ¿Cómo se calcula un valor esperado? &#60math xmlns="http://www.w3.org/1998/Math/MathML"&#62 &#60mtext&#62 la esperanza se calcula como la media aritmética de los valores,&NewLine;es decir la suma de los valores por sus probabilidades (las &NewLine;probabilidades serían las frecuencias relativas).&NewLine; &NewLine; k&NewLine;μ=E(X)=∑ xi⋅pi.&NewLine; i=1 &#60/mtext&#62 &#60/math&#62, TEORIAS DE PROBABILIDAD ¿Quién fue Thomas Bayes? Matemático, nació en Londres, Inglaterra, a. Teoría Bayesiana ???? [Enlace], Es una “técnica estadística que sirve para examinar las diferencias entre las medias de dos o más poblaciones”. ???? Ejemplo: En una empresa de alimentos se desea saber qué tanto varían los pesos de los empaques de sus productos, se selecciona al azar cinco unidades de ellos para pesarlos, y se obtuvieron los siguientes pesos en gramos: 490, 500, 510, 515 y 520, respectivamente. Dados estos datos, lo primero que se calcula es la media de esos datos: (490 + 500 + 510 + 515 + 520) / 5 = 507 La varianza se calcula de la siguiente manera: (490-507)2 + (500-507)2 + (510-507)2 + (515-507)2 + (520-507)2/ 5-1 = 145 Por lo tanto, la desviación estándar sería: √145 = 12,04 Con estos datos se llega a la conclusión de que el peso promedio de los empaques es de 507 gramos, con una tendencia a variar por debajo o por encima de dicho peso en 12 gramos., &#60math xmlns="http://www.w3.org/1998/Math/MathML"&#62 &#60mtext&#62 la esperanza se calcula como la media aritmética de los valores,&NewLine;es decir la suma de los valores por sus probabilidades (las &NewLine;probabilidades serían las frecuencias relativas).&NewLine; &NewLine; k&NewLine;μ=E(X)=∑ xi⋅pi.&NewLine; i=1 &#60/mtext&#62 &#60/math&#62 ???? &#60math xmlns="http://www.w3.org/1998/Math/MathML"&#62 &#60mrow&#62 &#60mtext&#62 EJEMPLO PROPIO:&NewLine;&NewLine;Al jugar con compañeros de la universidad con 2 monedas&NewLine;de la siguiente forma:&NewLine;&NewLine;1: Si salen 2 caras se ganan 3.000.&NewLine;2: Si sale al menos una cara se gana 1.000.&NewLine;3: Pero si no sale ninguna cara se pierden 5.000.&NewLine;&NewLine;E(X) = 3.000x1/4 + 1.000x1/2 + (-5.000)x1/4&NewLine;E(X)=750 + 500 + (-1250)&NewLine;E(X) = 0.&NewLine;&NewLine;Conclisión: Se trata de un juego justo, sin embargo,&NewLine;si modificamos los valores de las apuestas podemos&NewLine;tener ventaha o desventaja. &#60/mtext&#62 &#60/mrow&#62 &#60/math&#62, TEORIAS DE PROBABILIDAD ¿Qué son la Dispersión y la Variabilidad de los resultados de un experimento? d. Desviación Estandar y Varianza, d. Desviación Estandar y Varianza ¿Qué es la Varianza? Es una “técnica estadística que sirve para examinar las diferencias entre las medias de dos o más poblaciones”., a. Teoría Bayesiana ¿Qué es la probabilidad Condicional? Es la posibilidad que un suceso ocurra habiendo pasado otro suceso anteriormente, es decir que la mayoría de los ejemplos se plantearan de la siguiente manera: “Cual es la probabilidad que ocurra el suceso A dado que ha ocurrido el suceso B” o “Cual es la probabilidad que suceda el evento A sí ya ocurrió el evento B”., Es simplemente la raíz cuadrada positiva de la varianza. ???? Ejemplo: En una empresa de alimentos se desea saber qué tanto varían los pesos de los empaques de sus productos, se selecciona al azar cinco unidades de ellos para pesarlos, y se obtuvieron los siguientes pesos en gramos: 490, 500, 510, 515 y 520, respectivamente. Dados estos datos, lo primero que se calcula es la media de esos datos: (490 + 500 + 510 + 515 + 520) / 5 = 507 La varianza se calcula de la siguiente manera: (490-507)2 + (500-507)2 + (510-507)2 + (515-507)2 + (520-507)2/ 5-1 = 145 Por lo tanto, la desviación estándar sería: √145 = 12,04 Con estos datos se llega a la conclusión de que el peso promedio de los empaques es de 507 gramos, con una tendencia a variar por debajo o por encima de dicho peso en 12 gramos., Son funciones que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio. ???? [Enlace] pag 24, b. Variables aleatorias ¿Qué son? Son funciones que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio., Son funciones que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio. ¿Cómo se analizan y describen? Son funciones que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio.
+
+</noscript>
+
+<map name="Teorias de probabilidad.html">
+  <area shape="rect"
+        href="1XJZQCBQ8IW4LZKZI2CQFItextIhtml"
+        onClick="popUpEvt(event,'1XJZQCBQ8IW4LZKZI2CQFItextIhtml'); return false;"
+        coords="690,493,708,511">
+  <area shape="rect"
+        href="1XJZ4XGQ0I28SMXFVIXC4ItextIhtml"
+        onClick="popUpEvt(event,'1XJZ4XGQ0I28SMXFVIXC4ItextIhtml'); return false;"
+        coords="584,500,602,518">
+  <area shape="rect"
+        href="1XJZSPXH6I1JDK2TFI2KWFItextIhtml"
+        onClick="popUpEvt(event,'1XJZSPXH6I1JDK2TFI2KWFItextIhtml'); return false;"
+        coords="1594,682,1612,700">
+  <area shape="rect"
+        href="1XJZS0FDLI1V3CT00I2HJ1ItextIhtml"
+        onClick="popUpEvt(event,'1XJZS0FDLI1V3CT00I2HJ1ItextIhtml'); return false;"
+        coords="849,507,867,525">
+  <area shape="rect"
+        href="1XJYZ8JXHIGCYZ4SI4KZItextIhtml"
+        onClick="popUpEvt(event,'1XJYZ8JXHIGCYZ4SI4KZItextIhtml'); return false;"
+        coords="337,277,355,295">
+</map>
+
+<center>
+  <table width=* height=* cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td valign=center align=center>
+        <img USEMAP="#Teorias de probabilidad.html"
+             SRC="Teorias de probabilidad.jpg"
+             ALIGN=middle
+             BORDER=0
+             onClick=popDown();>
+      </td>
+    </tr>
+    <tr>
+      <td VALIGN=top ALIGN=right>
+        <table>
+          <tr>
+            <td ALIGN=right VALIGN=middle>
+              <map NAME="CmapToolsTrademark">
+                <area SHAPE="rect"
+                      href="http://cmap.ihmc.us/"
+                      onClick="openResource(event,'http://cmap.ihmc.us/', 0, 2); return false;"
+                      coords="1,1,210,50">
+              </map>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</center>
+</BODY>
+</HTML>
+<div id="1XJZQCBQ8IW4LZKZI2CQFItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="http://www2.ulpgc.es/hege/almacen/download/27/27373/temavariablesaleatorias.pdf "TITLE="">
+      Variables aleatorias
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XJZ4XGQ0I28SMXFVIXC4ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="http://halweb.uc3m.es/esp/Personal/personas/aarribas/esp/docs/estI_grado/estIG_tema3.pdf "TITLE="">
+      Variables aleatorias y tipos
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XJZSPXH6I1JDK2TFI2KWFItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://www.ina-pidte.ac.cr/mod/book/view.php?id=13057&chapterid=563 "TITLE="">
+      Tomado de INAVirtual
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XJZS0FDLI1V3CT00I2HJ1ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://economipedia.com/definiciones/esperanza-matematica.html "TITLE="">
+      Esperanza matemática
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XJYZ8JXHIGCYZ4SI4KZItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://www.ugr.es/~eaznar/bayes.htm "TITLE="">
+      Thomas Bayes
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
